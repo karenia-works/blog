@@ -4,19 +4,24 @@ on:
   push:
     branches: [ master ]
   pull_request:
-    branches: [ master ]
+    branches: [  ]
 
 jobs:
   build:
 
-    runs-on: node:12
+    runs-on: ubuntu-latest
 
 
     steps:
     - uses: actions/checkout@v2
       
+    - name: Setup Node.js for use with actions
+      uses: actions/setup-node@v1.1.0
+      with:
+        version: 12
+        
     - name: Install hexo
-      run: yarn global add hexo
+      run: npm -g install hexo
       id: install
 
     - name: Build blog
