@@ -36,4 +36,7 @@ jobs:
       with:
         allow_empty_commit: false
         build_dir: ./public
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+        GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
       
