@@ -21,7 +21,9 @@ jobs:
         version: 12
         
     - name: Install hexo
-      run: npm -g install hexo
+      run: |
+        npm -g install hexo
+        npm install
       id: install
 
     - name: Build blog
