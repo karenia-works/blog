@@ -1,0 +1,32 @@
+name: Publish
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: node:12
+
+
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Install hexo
+      run: yarn global add hexo
+      id: install
+
+    - name: Build blog
+      run: hexo deploy
+      id: build
+    
+    - name: Deploy blog to pages
+      id: deploy
+      uses: crazy-max/ghaction-github-pages@v1.3.0
+      with:
+        allow_empty_commit: false
+        build_dir: ./public
+      
